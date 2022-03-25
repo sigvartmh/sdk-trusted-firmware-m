@@ -132,7 +132,8 @@ set(TFM_PARTITION_AUDIT_LOG             OFF         CACHE BOOL      "Enable Audi
 set(TFM_PARTITION_PSA_PROXY             OFF         CACHE BOOL      "Enable PSA Proxy partition")
 
 set(FORWARD_PROT_MSG                    OFF         CACHE BOOL      "Whether to forward all PSA RoT messages to a Secure Enclave")
-set(TFM_PARTITION_FIRMWARE_UPDATE       OFF         CACHE BOOL      "Enable firmware update partition")
+set(TFM_PARTITION_FIRMWARE_UPDATE       ON	    CACHE BOOL      "Enable firmware update partition")
+set(MCUBOOT_DATA_SHARING                ON          CACHE BOOL      "Add sharing of application specific data using the same shared data area as for the measured boot")
 set(TFM_FWU_BOOTLOADER_LIB              "mcuboot"   CACHE STRING    "Bootloader configure file for Firmware Update partition")
 
 ################################## Dependencies ################################
@@ -150,7 +151,7 @@ This can be useful if the config file is generated and placed inside a directory
 to the include path of mbedtls.")
 set(TFM_MBEDCRYPTO_PLATFORM_EXTRA_CONFIG_PATH "" CACHE PATH "Config to append to standard Mbed Crypto config, used by platforms to cnfigure feature support")
 
-set(MCUBOOT_PATH                        "DOWNLOAD"        CACHE PATH      "Path to MCUboot (or DOWNLOAD to fetch automatically")
+set(MCUBOOT_PATH                        "/home/siho/multi/bootloader/mcuboot"        CACHE PATH      "Path to MCUboot (or DOWNLOAD to fetch automatically")
 set(MCUBOOT_VERSION                     "v1.8.0"  CACHE STRING    "The version of MCUboot to use")
 
 set(PSA_ARCH_TESTS_PATH                 "DOWNLOAD"  CACHE PATH      "Path to PSA arch tests (or DOWNLOAD to fetch automatically")

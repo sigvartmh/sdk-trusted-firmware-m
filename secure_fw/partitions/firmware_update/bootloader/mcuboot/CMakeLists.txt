@@ -19,14 +19,20 @@ target_sources(tfm_fwu_mcuboot_util
         $<$<BOOL:${DEFAULT_MCUBOOT_FLASH_MAP}>:${CMAKE_SOURCE_DIR}/bl2/src/default_flash_map.c>
 )
 
+configure_file(${CMAKE_SOURCE_DIR}/bl2/ext/mcuboot/include/mcuboot_config/mcuboot_config.h.in
+               ${CMAKE_CURRENT_BINARY_DIR}/mcuboot_config/mcuboot_config.h
+               @ONLY)
+
 target_include_directories(tfm_fwu_mcuboot_util
     INTERFACE
         ${CMAKE_BINARY_DIR}/bl2/ext/mcuboot
         ${CMAKE_SOURCE_DIR}/bl2/ext/mcuboot/include
         ${MCUBOOT_PATH}/boot/bootutil/include
         ${MCUBOOT_PATH}/boot/bootutil/src
+	#        ${MCUBOOT_PATH}/boot/zephyr/include
         ${CMAKE_CURRENT_SOURCE_DIR}/../
         ${MBEDCRYPTO_PATH}/include
+        $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}> # for mcuboot_config.h only
 )
 
 target_link_libraries(tfm_fwu_mcuboot_util
